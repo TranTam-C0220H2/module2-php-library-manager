@@ -38,34 +38,24 @@ session_start();
                         <?php
                         if (!isset($_SESSION['email'])) {
                             echo '*Email is "xxx@xxx.xxx"';
+                        } else {
+                            unset($_SESSION['email']);
                         }
                         ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                    <label for="firstname" class="col-md-3 control-label">*Name</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo isset($_SESSION['firstName'])?$_SESSION['firstName']:''; ?>">
+                        <input type="text" class="form-control" name="name" placeholder="Name" value="<?php echo isset($_SESSION['name'])?$_SESSION['name']:''; ?>">
                     </div>
                     <div class="col-md-3"></div>
                     <div class="col-md-9">
                         <?php
-                        if (!isset($_SESSION['firstName'])) {
+                        if (!isset($_SESSION['name'])) {
                             echo '*FirstName is "Xxx"';
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="<?php echo isset($_SESSION['lastName'])?$_SESSION['lastName']:''; ?>">
-                    </div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9">
-                        <?php
-                        if (!isset($_SESSION['lastName'])) {
-                            echo '*LastName is "Xxx"';
+                        } else {
+                            unset($_SESSION['name']);
                         }
                         ?>
                     </div>
@@ -79,7 +69,9 @@ session_start();
                     <div class="col-md-9">
                         <?php
                         if (!isset($_SESSION['password'])) {
-                            echo '*Password has 8 character and over (at least 1 uppercase and 1 special character "!@#$&*")';
+                            echo '*Password has 8 character and over (at least 1 uppercase, 1 number and 1 special character "!@#$&*")';
+                        }  else {
+                            unset($_SESSION['password']);
                         }
                         ?>
                     </div>
@@ -94,6 +86,8 @@ session_start();
                         <?php
                         if (!isset($_SESSION['phoneNumber'])) {
                             echo '*Phone number is 1 of 3 company "Viettel", "Mobi", "Vina"';
+                        } else {
+                            unset($_SESSION['phoneNumber']);
                         }
                         ?>
                     </div>
@@ -108,6 +102,7 @@ session_start();
                         <?php
                         if (isset($_SESSION['code'])&&$_SESSION['code'] == false) {
                             echo '*Code is invalid!';
+                            unset($_SESSION['code']);
                         }
                         ?>
                     </div>
@@ -129,7 +124,6 @@ session_start();
     </div>
 </div>
 </div>
-<?php session_destroy() ?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

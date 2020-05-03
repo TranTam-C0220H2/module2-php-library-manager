@@ -1,24 +1,21 @@
 <?php
 session_start();
+include '../../database/ConnectDatabase.php';
+include '../class/User.php';
 include '../class/RegistrationManager.php';
 $registrationManager = new RegistrationManager();
 
-if ($_SERVER['REQUEST_METHOD']=='POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_REQUEST['email'];
-    $firstName = $_REQUEST['firstName'];
-    $lastName = $_REQUEST['lastName'];
+    $name = $_REQUEST['name'];
     $password = $_REQUEST['password'];
     $phoneNumber = $_REQUEST['phoneNumber'];
     $code = $_REQUEST['code'];
     $checkInfo = 0;
 
     if ($code == '123456@Abc') {
-        if ($registrationManager->checkName($firstName)) {
-            $_SESSION['firstName'] = $firstName;
-            $checkInfo++;
-        }
-        if ($registrationManager->checkName($lastName)) {
-            $_SESSION['lastName'] = $lastName;
+        if ($registrationManager->checkName($name)) {
+            $_SESSION['name'] = $name;
             $checkInfo++;
         }
         if ($registrationManager->checkEmail($email)) {
@@ -30,10 +27,16 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $checkInfo++;
         }
         if ($registrationManager->checkPhoneNUmber($phoneNumber)) {
-            $_SESSION['password'] = $phoneNumber;
+            $_SESSION['phoneNumber'] = $phoneNumber;
             $checkInfo++;
         }
-        if ($checkInfo==5) {
+        if ($checkInfo == 4) {
+            $user = new User($name, $email, $password, $phoneNumber);
+            $registrationManager->add($user);
+            unset($_SESSION['name']);
+            unset($_SESSION['email']);
+            unset($_SESSION['password']);
+            unset($_SESSION['phoneNumber']);
             header('Location: ../home.php');
         } else {
             $_SESSION['code'] = $code;

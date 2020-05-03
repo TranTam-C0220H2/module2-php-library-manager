@@ -33,57 +33,57 @@ $arrayCategory = $categoryManager->getAllDatabase();
             </li>
         </ul>
     </div>
-<div class="card-body">
-    <form action="view/show-search.php" method="get" class="card card-sm">
-        <div class="card-body row no-gutters align-items-center">
-            <div class="col-auto">
-                <select id="inputState" name="choose" class="form-control form-control-lg form-control-borderless">
-                    <option selected>Choose...</option>
-                    <option>ID</option>
-                    <option>Name</option>
-                </select>
-            </div>
-            <!--end of col-->
-            <div class="col">
-                <input class="form-control form-control-lg form-control-borderless" type="search"
-                       placeholder="Search by choose" name="keyword">
-            </div>
-            <!--end of col-->
-            <div class="col-auto">
-                <!-- Example split danger button -->
-                <div class="btn-group">
-                    <button class="btn btn-lg btn-success" type="submit">Search</button>
+    <div class="card-body">
+        <form action="view/show-search.php" method="get" class="card card-sm">
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col-auto">
+                    <select id="inputState" name="choose" class="form-control form-control-lg form-control-borderless">
+                        <option selected>Choose...</option>
+                        <option>ID</option>
+                        <option>Name</option>
+                    </select>
                 </div>
+                <!--end of col-->
+                <div class="col">
+                    <input class="form-control form-control-lg form-control-borderless" type="search"
+                           placeholder="Search by choose" name="keyword">
+                </div>
+                <!--end of col-->
+                <div class="col-auto">
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                    </div>
+                </div>
+                <!--end of col-->
             </div>
-            <!--end of col-->
-        </div>
-    </form>
-</div>
-<br>
-<div class="card-body">
-    <h4>Categories List</h4>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($arrayCategory as $item): ?>
+        </form>
+    </div>
+    <div class="card-body"><a href="view/add.php">Add new category</a></div>
+    <div class="card-body">
+        <h4>Categories List</h4>
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row"><?php echo $item['id'] ?></th>
-                <td><?php echo $item['name'] ?></td>
-                <td><a href="view/update.php?id=<?php echo $item['id'] ?>">Update</a>|<a
-                            onclick="return confirm('Delete?')" href="action/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
-                </td>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
-<div class="card-body"><a href="view/add.php">Add new category</a></div>
+            </thead>
+            <tbody>
+            <?php foreach ($arrayCategory as $item): ?>
+                <tr>
+                    <th scope="row"><?php echo $item['id'] ?></th>
+                    <td><?php echo $item['name'] ?></td>
+                    <td><a href="view/update.php?id=<?php echo $item['id'] ?>">Update</a>|<a
+                                onclick="return confirm('Delete?')"
+                                href="action/delete.php?id=<?php echo $item['id'] ?>">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -8,8 +8,8 @@ class ConnectDatabase
 
     public function __construct()
     {
-        $this->username = '';
-        $this->password = '';
+        $this->username = 'root';
+        $this->password = '774111@Tvt';
     }
 
     function connect()

@@ -61,7 +61,7 @@ $arrayBook = $bookManager->getAllDatabase();
             </div>
         </form>
     </div>
-    <br>
+    <div class="card-body"><a href="view/add.php">Add new category</a></div>
     <div class="card-body">
         <h5 class="card-title">Categories List</h5>
         <table class="table">
@@ -96,7 +96,6 @@ $arrayBook = $bookManager->getAllDatabase();
             </tbody>
         </table>
     </div>
-    <div class="card-body"><a href="view/add.php">Add new category</a></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
